@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 - Pomodoro || Advent of JavaScript</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="ring" id="ring">
+        <svg width="518" height="518" viewBox="0 0 518 518">
+          <circle stroke-width="9px" x="0" y="y" cx="259" cy="259" r="254" />
+        </svg>
+      </div>
+
+      <div class="timer">
+        <div class="time">
+          <div class="minutes">
+            <input id="minutes" type="text" value="15" disabled />
+          </div>
+          <div class="colon">:</div>
+          <div class="seconds">
+            <input id="seconds" type="text" value="00" disabled />
+          </div>
+        </div>
+        <button id="start-btn" class="start">start</button>
+        <button id="settings" class="settings">
+          <img src="images/gear.svg" alt="Settings" />
+        </button>
+      </div>
+    </div>
+
+    <script src="./script//pomodoro.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="pomodoro-app">
+      <div id="container">
+        <div id="timer">
+          <div id="time">
+            <span id="minutes">25</span>
+            <span id="colon">:</span>
+            <span id="seconds">00</span>
+          </div>
+          <div id="filler"></div>
+        </div>
+
+        <div id="buttons">
+          <button id="work">Work</button>
+          <button id="shortBreak">Short Break</button>
+          <button id="longBreak">Long Break</button>
+          <button id="stop">Stop</button>
+        </div>
+      </div>
+    </div>
+    <script src="./script/test.js"></script>
+  </body>
+</html> -->
