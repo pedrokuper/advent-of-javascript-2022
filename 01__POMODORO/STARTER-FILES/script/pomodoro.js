@@ -1,4 +1,4 @@
-const INTERVAL_SECONDS = 50;
+const INTERVAL_SECONDS = 200;
 
 const BUTTON = document.getElementById("start-btn");
 const MINUTES = document.getElementById("minutes");
@@ -9,13 +9,14 @@ const RING = document.getElementById("ring");
 SETTINGS.addEventListener("click", setTime);
 BUTTON.addEventListener("click", toggle);
 
-//GLOBAL VARIABLES
+let GLOBAL_TIME = 15;
 
 function setTime() {
   let time;
   do {
     time = prompt("Defina el tiempo en minutos: Ej: 10. Solo use números");
   } while (isNaN(parseInt(time)));
+  GLOBAL_TIME = parseInt(time);
 
   return parseInt(time);
 }
@@ -25,13 +26,12 @@ let interval;
 function startTimer(seconds, minutes) {
   interval = setInterval(() => {
     seconds--;
-
     if (seconds == 0 && minutes > -1) {
       minutes--;
       seconds = 59;
     }
-    MINUTES.value = minutes > 10 ? minutes : `0${minutes}`;
-    SECONDS.value = seconds > 10 ? seconds : `0${seconds}`;
+    MINUTES.value = minutes >= 10 ? minutes : `0${minutes}`;
+    SECONDS.value = seconds >= 10 ? seconds : `0${seconds}`;
     if (minutes < 0) {
       clearInterval(interval);
 
@@ -39,11 +39,10 @@ function startTimer(seconds, minutes) {
       SECONDS.value = `0${0}`;
       RING.style.stroke = "red";
       setTimeout(() => {
-        alert("Time Finished");
+        alert("Tiempo terminado!");
+        RING.style.stroke = "#09a65a";
       }, 1);
     }
-
-    console.log(minutes + ":" + seconds);
   }, INTERVAL_SECONDS);
 }
 
@@ -56,9 +55,12 @@ function toggle() {
   toggleBtn = !toggleBtn;
 
   if (toggleBtn) {
-    minutes = setTime() - 1;
+    minutes = GLOBAL_TIME - 1 ?? setTime() - 1;
+
     startTimer(seconds, minutes);
   } else {
+    MINUTES.value = GLOBAL_TIME;
+    SECONDS.value = `0${0}`;
     clearInterval(interval);
   }
 }
